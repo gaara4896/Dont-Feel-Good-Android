@@ -12,9 +12,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val player = MediaPlayer.create(this, R.raw.idontfeelsogood)
+        player.isLooping = true
 
         buttonPlay.setOnClickListener {
-
+            if(player.isPlaying){
+                player.pause()
+                buttonPlay.setImageResource(R.drawable.play_button)
+            } else {
+                player.start()
+                buttonPlay.setImageResource(R.drawable.pause_button)
+            }
         }
     }
 }
